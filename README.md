@@ -2,3 +2,33 @@
 Tools for playing the Classic version of the Traveller RPG.
 
 This version is done so I can learn [Laravel](laravel.com).
+
+## Installation
+
+* clone the repository
+```
+git clone https://github.com/eggplantpasta/classic-traveller-tools.git
+cd classic-traveller-tools/cctools
+```
+
+* initialise the database
+```
+touch /tmp/cctools.sqlite
+php artisan migrate
+```
+
+## Starting
+
+* serve the application
+```
+php artisan serve
+```
+
+* visit the application [here (http://127.0.0.1:8000)](http://127.0.0.1:8000)
+
+## Stopping
+
+* Use Control-C to exit the artisan server.
+```
+^C
+```

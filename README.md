@@ -13,7 +13,7 @@ cd classic-traveller-tools/cctools
 
 * initialise the database
 ```
-touch /tmp/cctools.sqlite
+touch database/cctools.sqlite
 php artisan migrate
 ```
 

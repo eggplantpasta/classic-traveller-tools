@@ -8,7 +8,7 @@ This version is done so I can learn [Laravel](laravel.com).
 * clone the repository
 ```
 git clone https://github.com/eggplantpasta/classic-traveller-tools.git
-cd classic-traveller-tools/cctools
+cd classic-traveller-tools/cttools
 composer install
 ```
 

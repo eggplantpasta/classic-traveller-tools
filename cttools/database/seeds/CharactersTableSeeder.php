@@ -11,6 +11,6 @@ class CharactersTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Character::class, 10)->create();
     }
 }

@@ -18,10 +18,10 @@ cp .env.example .env
 vi .env
 ```
 
-* initialise the database
+* initialise the database and seed dummy data
 ```
-touch database/cctools.sqlite
-php artisan migrate
+touch database/cttools.sqlite
+php artisan migrate --seed
 ```
 
 ## Starting

@@ -9,6 +9,13 @@ This version is done so I can learn [Laravel](laravel.com).
 ```
 git clone https://github.com/eggplantpasta/classic-traveller-tools.git
 cd classic-traveller-tools/cctools
+composer install
+```
+
+* set up .env and edit database path
+```
+cp .env.example .env
+vi .env
 ```
 
 * initialise the database

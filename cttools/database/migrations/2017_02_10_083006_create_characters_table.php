@@ -19,12 +19,12 @@ class CreateCharactersTable extends Migration
           $table->string('name', 100);
           $table->string('title', 20)->nullable();
           $table->string('sex', 1)->nullable();
-          $table->smallInteger('strength');
-          $table->smallInteger('dexterity');
-          $table->smallInteger('endurance');
-          $table->smallInteger('intelligence');
-          $table->smallInteger('education');
-          $table->smallInteger('social');
+          $table->smallInteger('strength')->unsigned();
+          $table->smallInteger('dexterity')->unsigned();
+          $table->smallInteger('endurance')->unsigned();
+          $table->smallInteger('intelligence')->unsigned();
+          $table->smallInteger('education')->unsigned();
+          $table->smallInteger('social')->unsigned();
 
           $table->timestamps();
         });

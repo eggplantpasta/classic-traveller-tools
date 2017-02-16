@@ -15,6 +15,7 @@ composer install
 * set up .env and edit database path
 ```
 cp .env.example .env
+php artisan key:generate
 vi .env
 ```
 
@@ -36,6 +37,3 @@ php artisan serve
 ## Stopping
 
 * Use Control-C to exit the artisan server.
-```
-^C
-```

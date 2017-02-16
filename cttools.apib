@@ -1,0 +1,110 @@
+FORMAT: 1A
+HOST: http://127.0.0.1:8000/api/v1
+
+# CT Tools (v1) API
+
+CT Tools is a simple API for generating and managing Classic Traveller (CT) role playing game data.
+
+> **Note** to render this API documentation as HTML from the source  blueprint (.apib) file use `aglio --theme-variables slate -i cttools.apib -o cttools.html`.
+
+# Group Characters
+
+Resources related to player and non-player characters. Provides for the
+* automatic generation or character data for non-player characters (NPC),
+* storage of pre-generated character data for players,
+* update and deletion of stored character data,
+* and retrieval of all character data in bulk as well as indavidually for generation of character data sheets.
+
+<table>
+  <tr>
+    <th>URL</th><th>GET<br>read</th><th>POST<br>create</th><th>PUT<br>update</th><th>DELETE</th>
+  </tr>
+  <tr>
+    <td>/characters</td><td>Returns a list of characters</td><td>Create a new character</td><td>(405)</td><td>(405)</td>
+  <tr>
+    <td>/characters/711</td><td>Returns a specific character</td><td>(405)</td><td>Updates a specific character</td><td>Deletes a specific character</td>
+  </tr>
+</table>
+
+## Character Collection [/characters]
+
+### List All Characters [GET]
+
+List full detail on all characters.
+The universal personality profile (UPP) is represented by an integer from 1 to 15.
+
++ Response 200 (application/json)
+  + Attributes (array[Character])
+
+### Generate a New Character [POST]
+
+You may generate new characters using this action.
+This action takes a JSON payload, specifying the name and sex of the character, as part of the request.
+The response header contains the location of the newly generated character.
+The response body contains full character data;
+* new unique id,
+* name and sex given in the request,
+* a noble title based on the character's social standing,
+* randomly generated (2D roll) universal personality profile (UPP) with initial values from 2 to 12.
+
++ Request (application/json)
+
+        {
+            "name": "El Barto",
+            "sex": "M"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /characters/2
+
+    + Attributes (Character)
+
+## Character [/characters/{id}]
+
++ Parameters
+    + id (number) - ID of the Character in the form of an integer.
+
+### View a Character's Detail [GET]
+
++ Response 200 (application/json)
+  + Attributes (Character)
+
+### Update a Character's Detail [PUT]
+
++ Parameters
+    + id (number) - ID of the Character in the form of an integer
+
++ Response 200 (application/json)
+  + Attributes (Character)
+
+
+### Delete a Character [DELETE]
+
++ Parameters
+    + id (number) - ID of the Character in the form of an integer
+
++ Response 204  (application/json)
+
+
+# Data Structures
+
+## Character (object)
+
++ id: 2 (number, required) - The unique identifier for a character.
++ name: El Barto (string, required) - Name of the character.
++ title: Duke (string) - Hereditary title.
++ sex: M (string)
+  ISO/IEC 5218.
+  NULL = 0 = not known,
+  M = 1 = male,
+  F = 2 = female,
+  X = 9 = not applicable.
++ strength: 8 (number) - Strength is both a general evaluation of the character's physical ability, and a specific measure of force which may be applied.
++ dexterity: 8 (number) - Dexterity measures physical coordination.
++ endurance: 8 (number) - Endurance measures physical determination and stamina.
++ intelligence: 8 (number) - Intelligence corresponds to IQ.
++ education: 8 (number) - Education indicates the highest level of schooling attained.
++ social: 14 (number) - Social Standing notes the social class and level of society from which the character comes.

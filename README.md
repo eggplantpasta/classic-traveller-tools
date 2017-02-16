@@ -1,7 +1,18 @@
-# classic-traveller-tools
+classic-traveller-tools
+
+# CT Tools
 Tools for playing the Classic version of the Traveller RPG.
 
-This version is done so I can learn [Laravel](laravel.com).
+This project is done so I can learn [Laravel](laravel.com).
+
+
+## API Documentation
+
+The HTML [API documentation](cttools.html) and the source [blueprint](https://apiblueprint.org/) file cttools.apib are included in this repository. The HTML is generated using [aglio](https://github.com/danielgtaylor/aglio).
+```
+aglio --theme-variables slate -i cttools.apib -o cttools.html
+```
+
 
 ## Installation
 

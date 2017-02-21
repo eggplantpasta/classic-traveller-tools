@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace cttools\Http\Controllers\Auth;
 
-use App\User;
-use App\Http\Controllers\Controller;
+use cttools\User;
+use cttools\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 

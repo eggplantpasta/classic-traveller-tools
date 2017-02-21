@@ -171,11 +171,11 @@ return [
         /*
          * Application Service Providers...
          */
-        cttools\Providers\AppServiceProvider::class,
-        cttools\Providers\AuthServiceProvider::class,
-        // cttools\Providers\BroadcastServiceProvider::class,
-        cttools\Providers\EventServiceProvider::class,
-        cttools\Providers\RouteServiceProvider::class,
+        App\Providers\AppServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
 
     ],
 

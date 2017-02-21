@@ -1,6 +1,6 @@
 <?php
 
-namespace cttools;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 

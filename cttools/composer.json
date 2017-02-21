@@ -19,7 +19,7 @@
             "database"
         ],
         "psr-4": {
-            "cttools\\": "app/"
+            "App\\": "app/"
         }
     },
     "autoload-dev": {

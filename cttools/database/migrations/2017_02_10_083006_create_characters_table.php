@@ -14,19 +14,19 @@ class CreateCharactersTable extends Migration
     public function up()
     {
         Schema::create('characters', function (Blueprint $table) {
-          $table->increments('id');
+            $table->increments('id');
 
-          $table->string('name', 100);
-          $table->string('title', 20)->nullable();
-          $table->string('sex', 1)->nullable();
-          $table->smallInteger('strength')->unsigned();
-          $table->smallInteger('dexterity')->unsigned();
-          $table->smallInteger('endurance')->unsigned();
-          $table->smallInteger('intelligence')->unsigned();
-          $table->smallInteger('education')->unsigned();
-          $table->smallInteger('social')->unsigned();
+            $table->string('name', 100);
+            $table->string('title', 20)->nullable();
+            $table->string('sex', 1)->nullable();
+            $table->smallInteger('strength')->unsigned();
+            $table->smallInteger('dexterity')->unsigned();
+            $table->smallInteger('endurance')->unsigned();
+            $table->smallInteger('intelligence')->unsigned();
+            $table->smallInteger('education')->unsigned();
+            $table->smallInteger('social')->unsigned();
 
-          $table->timestamps();
+            $table->timestamps();
         });
     }
 

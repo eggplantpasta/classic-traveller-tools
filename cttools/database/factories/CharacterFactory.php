@@ -8,7 +8,7 @@ $factory->define(App\Character::class, function (Faker\Generator $faker) {
     // M = 1 = male,
     // F = 2 = female,
     // X = 9 = not applicable.
-    $sex = $faker->randomElement($array = [NULL, 'M', 'F', 'X']);
+    $sex = $faker->randomElement($array = [null, 'M', 'F', 'X']);
 
     // name and title depend on sex
     switch ($sex) {
@@ -28,11 +28,13 @@ $factory->define(App\Character::class, function (Faker\Generator $faker) {
     // title modified if high social standing
     $social = $faker->numberBetween($min = 1, $max = 15);
 
-    if ($social > 10)
-      if ($sex = 'F') //Female
+    if ($social > 10) {
+        if ($sex = 'F') { //Female
         $title = [11 => 'Dame', 12 => 'Baronet', 13 => 'Marquesa', 14 => 'Countess', 15 => 'Duchess'][$social];
-      else
-        $title = [11 => 'Knight', 12 => 'Baron', 13 => 'Marquis', 14 => 'Count', 15 => 'Duke'][$social];
+        } else {
+            $title = [11 => 'Knight', 12 => 'Baron', 13 => 'Marquis', 14 => 'Count', 15 => 'Duke'][$social];
+        }
+    }
 
     return [
         'name' => $name,

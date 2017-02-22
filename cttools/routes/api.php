@@ -18,22 +18,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get('v1/characters', function () {
-    return 'v1/characters';
-});
+// get list of characters
+Route::get('v1/characters', 'Api\v1\CharacterController@index');
+// create new characters
+Route::post('v1/characters', 'Api\v1\CharacterController@store');
 
-Route::post('v1/characters', function () {
-    return 'post v1/characters';
-});
-
-Route::get('v1/characters/{id}', function ($id) {
-    return 'v1/characters '.$id;
-});
-
-Route::put('v1/characters/{id}', function ($id) {
-    return 'put v1/characters '.$id;
-});
-
-Route::delete('v1/characters/{id}', function ($id) {
-    return 'delete v1/characters '.$id;
-});
+// get specific character
+Route::get('v1/characters/{id}', 'Api\v1\CharacterController@show');
+// update existing character
+Route::put('v1/characters/{id}', 'Api\v1\CharacterController@update');
+// delete a character
+Route::delete('v1/characters/{id}', 'Api\v1\CharacterController@destroy');

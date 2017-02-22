@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\v1;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CharacterController extends Controller
 {
@@ -13,7 +14,7 @@ class CharacterController extends Controller
      */
     public function index()
     {
-        //
+        return 'get v1/characters';
     }
 
     /**
@@ -34,7 +35,7 @@ class CharacterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return 'post v1/characters';
     }
 
     /**
@@ -45,7 +46,7 @@ class CharacterController extends Controller
      */
     public function show($id)
     {
-        //
+        return 'get v1/characters '.$id;
     }
 
     /**
@@ -68,7 +69,7 @@ class CharacterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return 'put v1/characters '.$id;
     }
 
     /**
@@ -79,6 +80,6 @@ class CharacterController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return 'delete v1/characters '.$id;
     }
 }

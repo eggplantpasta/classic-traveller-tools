@@ -37,6 +37,18 @@ class CharacterController extends Controller
      */
     public function store(Request $request)
     {
+        $character = new Character;
+
+        $character->name = $request->name;
+        $character->title = $request->title;
+        $character->sex = $request->sex;
+        $character->strength = $request->strength;
+        $character->dexterity = $request->dexterity;
+        $character->endurance = $request->endurance;
+        $character->intelligence = $request->intelligence;
+        $character->education = $request->education;
+        $character->social = $request->social;
+
         return 'post v1/characters';
     }
 

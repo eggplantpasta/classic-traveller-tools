@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api\v1;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Character;
+
 class CharacterController extends Controller
 {
     /**
@@ -14,7 +16,7 @@ class CharacterController extends Controller
      */
     public function index()
     {
-        return 'get v1/characters';
+        return Character::all()->toJson();
     }
 
     /**
@@ -46,7 +48,7 @@ class CharacterController extends Controller
      */
     public function show($id)
     {
-        return 'get v1/characters '.$id;
+        return Character::findOrFail($id)->toJson();
     }
 
     /**

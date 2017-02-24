@@ -43,7 +43,8 @@ php artisan migrate --seed
 php artisan serve
 ```
 
-* visit the application [here (http://127.0.0.1:8000)](http://127.0.0.1:8000)
+* visit the application [frontpage (http://127.0.0.1:8000)](http://127.0.0.1:8000)
+* or visit the [api http://127.0.0.1:8000/api/v1/characters](http://127.0.0.1:8000/api/v1/characters)
 
 ## Stopping
 

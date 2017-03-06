@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Request;
+use Response;
 
+use App\Http\Controllers\Controller;
 use App\Character;
 
 class CharacterController extends Controller

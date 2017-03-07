@@ -22,9 +22,24 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('v1/characters', 'Api\v1\CharacterController@index');
 // create new characters
 Route::post('v1/characters', 'Api\v1\CharacterController@store');
+// Error: 405
+// TODO: error stub - replace with implementation
+Route::put('v1/characters', function () {
+    return response('Error: 405', 405);
+});
+// Error: 405
+// TODO: error stub - replace with implementation
+Route::put('v1/characters', function () {
+    return response('Error: 405', 405);
+});
 
 // get specific character
 Route::get('v1/characters/{id}', 'Api\v1\CharacterController@show');
+// Error: 405
+// TODO: error stub - replace with implementation
+Route::post('v1/characters/{id}', function () {
+    return response('Error: 405', 405);
+});
 // update existing character
 Route::put('v1/characters/{id}', 'Api\v1\CharacterController@update');
 // delete a character

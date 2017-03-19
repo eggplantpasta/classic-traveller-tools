@@ -1,5 +1,7 @@
 <?php
 
+use App\Cttools\Game;
+
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Character::class, function (Faker\Generator $faker) {
 
@@ -26,7 +28,7 @@ $factory->define(App\Character::class, function (Faker\Generator $faker) {
     }
 
     // title modified if high social standing
-    $social = $faker->numberBetween($min = 1, $max = 15);
+    $social = Game::throwD6(2);
 
     if ($social > 10) {
         if ($sex = 'F') { //Female
@@ -40,11 +42,11 @@ $factory->define(App\Character::class, function (Faker\Generator $faker) {
         'name' => $name,
         'title' => $title,
         'sex' => $sex,
-        'strength' => $faker->numberBetween($min = 1, $max = 15),
-        'dexterity' => $faker->numberBetween($min = 1, $max = 15),
-        'endurance' => $faker->numberBetween($min = 1, $max = 15),
-        'intelligence' => $faker->numberBetween($min = 1, $max = 15),
-        'education' => $faker->numberBetween($min = 1, $max = 15),
+        'strength' => $social = Game::throwD6(2),
+        'dexterity' => $social = Game::throwD6(2),
+        'endurance' => $social = Game::throwD6(2),
+        'intelligence' => $social = Game::throwD6(2),
+        'education' => $social = Game::throwD6(2),
         'social' => $social,
     ];
 });

@@ -5,6 +5,8 @@ HOST: http://127.0.0.1:8000/api/v1
 
 CT Tools is a simple API for generating and managing Classic Traveller (CT) role playing game data.
 
+This API conforms to the [JSON API](http://jsonapi.org) (v1.0) specification.
+
 > **Note** to render this API documentation as HTML from the source  blueprint (.apib) file use `aglio --theme-variables slate -i cttools.apib -o cttools.html`.
 
 # Group Characters
@@ -62,6 +64,18 @@ The response body contains full character data;
 
     + Attributes (Character)
 
+
+### 405 Method Not Supported [PUT]
+
++ Response 405 (application/json)
+  + Attributes
+  {
+    "errors":[{
+      (Error405)
+    }]
+  }
+
+
 ## Character [/characters/{id}]
 
 + Parameters
@@ -108,3 +122,17 @@ The response body contains full character data;
 + intelligence: 8 (number) - Intelligence corresponds to IQ.
 + education: 8 (number) - Education indicates the highest level of schooling attained.
 + social: 14 (number) - Social Standing notes the social class and level of society from which the character comes.
+
+## Error400 (object)
+
++ status: 400 (string, required) - HTTP status code
++ code: 1400 (string, required) - specific error code
++ title: Bad Request (string, required) - specific error message
++ detail: The request could not be understood by the server due to malformed syntax. (string, required) - specific detail message
+
+## Error405 (object)
+
++ status: 405 (string, required)
++ code: 1405 (string, required)
++ title: Method Not Supported (string, required)
++ detail: The method specified in the Request Line is not allowed for the resource identified by the Request-URI. (string, required)

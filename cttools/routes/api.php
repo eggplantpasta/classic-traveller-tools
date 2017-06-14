@@ -24,14 +24,14 @@ Route::get('v1/characters', 'Api\v1\CharacterController@index');
 Route::post('v1/characters', 'Api\v1\CharacterController@store');
 // Error: 405
 // TODO: error stub - replace with implementation
-Route::put('v1/characters', function () {
-    return response('Error: 405', 405);
-});
+// Route::put('v1/characters', function () {
+//     return response('Error: 405', 405);
+// });
 // Error: 405
 // TODO: error stub - replace with implementation
-Route::put('v1/characters', function () {
-    return response('Error: 405', 405);
-});
+// Route::put('v1/characters', function () {
+//     return response('Error: 405', 405);
+// });
 
 // get specific character
 Route::get('v1/characters/{id}', 'Api\v1\CharacterController@show');

@@ -1,3 +1,15 @@
 language: php
-before_script:
-    - composer install
+
+php:
+  - 7.0
+  - 7.1
+
+before_install:
+  - composer self-update
+  - composer clear-cache
+
+script:
+  - .vendor/bin/phpunit
+
+notifications:
+  email: false

@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/eggplantpasta/classic-traveller-tools.svg?branch=master)](https://travis-ci.org/eggplantpasta/classic-traveller-tools)
+
 classic-traveller-tools
 
 # CT Tools

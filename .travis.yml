@@ -10,7 +10,8 @@ before_install:
   - cd cttools
 
 install:
-  - composer update
+  - composer update --no-interaction
+  - php artisan key:generate
 
 script:
   - vendor/bin/phpunit

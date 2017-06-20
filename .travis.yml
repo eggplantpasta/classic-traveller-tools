@@ -1,7 +1,6 @@
 language: php
 
 php:
-  - 7.0
   - 7.1
 
 before_install:
@@ -10,6 +9,7 @@ before_install:
 
 install:
   - composer update --no-interaction
+  - php artisan cache:clear
   - php artisan key:generate
 
 script:

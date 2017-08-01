@@ -1,11 +1,20 @@
 language: php
-
 php:
   - 7.1
+
+cache:
+  directories:
+    - $HOME/.composer/cache
 
 before_install:
   - composer self-update
   - composer clear-cache
+  - composer dump-autoload --no-interaction
+  - composer install --prefer-dist --no-interaction
+  - php artisan clear-compiled -n
+  - php artisan optimize -n
+  - php artisan migrate
+  - php artisan db:seed
 
 install:
   - composer update --no-interaction

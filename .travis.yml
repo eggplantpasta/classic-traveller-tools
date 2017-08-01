@@ -11,6 +11,7 @@ before_install:
   - composer clear-cache
   - composer dump-autoload --no-interaction
   - composer install --prefer-dist --no-interaction
+  - php artisan cache:clear
   - php artisan clear-compiled -n
   - php artisan optimize -n
   - php artisan migrate

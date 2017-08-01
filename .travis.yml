@@ -13,8 +13,7 @@ before_install:
   - composer install --prefer-dist --no-interaction
   - php artisan clear-compiled -n
   - php artisan optimize -n
-  - php artisan migrate -y
-  - php artisan db:seed -y
+  - php artisan migrate --force --seed --no-interaction
 
 install:
   - composer update --no-interaction

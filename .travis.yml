@@ -18,6 +18,7 @@ env:
     - QUEUE_DRIVER=sync
 
 install:
+  - composer install --prefer-dist --no-interaction
   - php artisan migrate --seed --no-interaction
 
 script:

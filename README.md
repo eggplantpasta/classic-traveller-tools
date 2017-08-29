@@ -29,7 +29,6 @@ composer install
 ```
 cp .env.example .env
 php artisan key:generate
-vi .env
 ```
 
 * initialise the database and seed dummy data
@@ -50,4 +49,4 @@ php artisan serve
 
 ## Stopping
 
-* Use Control-C to exit the artisan server.
+* Use Control-C to exit the php server.

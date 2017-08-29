@@ -25,7 +25,7 @@ cd classic-traveller-tools/cttools
 composer install
 ```
 
-* set up .env and edit database path
+* set up .env
 ```
 cp .env.example .env
 php artisan key:generate
@@ -34,7 +34,7 @@ vi .env
 
 * initialise the database and seed dummy data
 ```
-touch database/cttools.sqlite
+touch database/database.sqlite
 php artisan migrate --seed
 ```
 

@@ -17,7 +17,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
 // get list of characters
 Route::get('v1/characters', 'Api\v1\CharacterController@index');
 // create new characters

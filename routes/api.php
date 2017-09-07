@@ -2,6 +2,10 @@
 
 use Illuminate\Http\Request;
 
+use App\Character;
+use App\Http\Resources\Character as CharacterResource;
+use App\Http\Resources\CharacterCollection;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,7 +22,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // get list of characters
-Route::get('v1/characters', 'Api\v1\CharacterController@index');
+// Route::get('v1/characters', 'Api\v1\CharacterController@index');
+
+Route::get('v1/characters', function () {
+    return new CharacterCollection(Character::all());
+});
+
 // create new characters
 Route::post('v1/characters', 'Api\v1\CharacterController@store');
 // Error: 405
@@ -33,7 +42,11 @@ Route::post('v1/characters', 'Api\v1\CharacterController@store');
 // });
 
 // get specific character
-Route::get('v1/characters/{id}', 'Api\v1\CharacterController@show');
+// Route::get('v1/characters/{id}', 'Api\v1\CharacterController@show');
+Route::get('v1/characters/{id}', function ($id) {
+    return new CharacterResource(Character::find($id));
+});
+
 // Error: 405
 // TODO: error stub - replace with implementation
 Route::post('v1/characters/{id}', function () {

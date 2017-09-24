@@ -50,3 +50,8 @@ php artisan serve
 ## Stopping
 
 * Use Control-C to exit the php server.
+
+## Notes
+
+[API Blueprint Renderer for Laravel](https://github.com/M165437/laravel-blueprint-docs)
+[library for generating RFC 4122 version 1, 3, 4, and 5 universally unique identifiers ](https://github.com/ramsey/uuid)

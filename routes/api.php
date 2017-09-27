@@ -56,3 +56,9 @@ Route::post('v1/characters/{id}', function () {
 Route::put('v1/characters/{id}', 'Api\v1\CharacterController@update');
 // delete a character
 Route::delete('v1/characters/{id}', 'Api\v1\CharacterController@destroy');
+
+// Error: 404
+// TODO: error stub - replace with implementation
+Route::fallback(function () {
+    return response('Error: 404', 404);
+});

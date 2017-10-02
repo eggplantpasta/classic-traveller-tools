@@ -5,7 +5,7 @@ HOST: http://127.0.0.1:8000/api/v1
 
 CT Tools is a simple API for generating and managing Classic Traveller (CT) role playing game data.
 
-This API conforms to the [JSON API](http://jsonapi.org) (v1.0) specification.
+This API conforms to the default Laravel [Eloquent: API Resources](https://laravel.com/docs/5.5/eloquent-resources) format introduced in Laravel 5.5.
 
 > **Note** to render this API documentation as HTML from the source  blueprint (.apib) file use `aglio --theme-variables slate -i cttools.apib -o cttools.html`.
 
@@ -14,8 +14,8 @@ This API conforms to the [JSON API](http://jsonapi.org) (v1.0) specification.
 Resources related to player and non-player characters. Provides for the
 * automatic generation or character data for non-player characters (NPC),
 * storage of pre-generated character data for players,
-* update and deletion of stored character data,
-* and retrieval of all character data in bulk as well as indavidually for generation of character data sheets.
+* update and deletion of stored character data, and
+* retrieval of all character data in bulk as well as indavidually for generation of character data sheets.
 
 <table>
   <tr>
@@ -24,7 +24,7 @@ Resources related to player and non-player characters. Provides for the
   <tr>
     <td>/characters</td><td>Returns a list of characters</td><td>Create a new character</td><td>(405)</td><td>(405)</td>
   <tr>
-    <td>/characters/711</td><td>Returns a specific character</td><td>(405)</td><td>Updates a specific character</td><td>Deletes a specific character</td>
+    <td>/characters/{id}</td><td>Returns a specific character</td><td>(405)</td><td>Updates a specific character</td><td>Deletes a specific character</td>
   </tr>
 </table>
 
@@ -36,7 +36,7 @@ List full detail on all characters.
 The universal personality profile (UPP) is represented by an integer from 1 to 15.
 
 + Response 200 (application/json)
-  + Attributes (array[Character])
+  + Attributes (array[Character Detail])
 
 ### Generate a New Character [POST]
 
@@ -50,11 +50,7 @@ The response body contains full character data;
 * randomly generated (2D roll) universal personality profile (UPP) with initial values from 2 to 12.
 
 + Request (application/json)
-
-        {
-            "name": "El Barto",
-            "sex": "M"
-        }
+  + Attributes (array[Character])
 
 + Response 201 (application/json)
 
@@ -62,18 +58,18 @@ The response body contains full character data;
 
             Location: /characters/2
 
-    + Attributes (Character)
+    + Attributes (Character Detail)
 
 
 ### 405 Method Not Supported [PUT]
 
 + Response 405 (application/json)
-  + Attributes
-  {
-    "errors":[{
-      (Error405)
-    }]
-  }
+  + Attributes (Error405)
+
+### 405 Method Not Supported [DELETE]
+
++ Response 405 (application/json)
+  + Attributes (Error405)
 
 
 ## Character [/characters/{id}]
@@ -84,7 +80,12 @@ The response body contains full character data;
 ### View a Character's Detail [GET]
 
 + Response 200 (application/json)
-  + Attributes (Character)
+  + Attributes (Character Detail)
+
+### 405 Method Not Supported [POST]
+
++ Response 405 (application/json)
+  + Attributes (Error405)
 
 ### Update a Character's Detail [PUT]
 
@@ -92,7 +93,7 @@ The response body contains full character data;
     + id (number) - ID of the Character in the form of an integer
 
 + Response 200 (application/json)
-  + Attributes (Character)
+  + Attributes (Character Detail)
 
 
 ### Delete a Character [DELETE]
@@ -106,33 +107,59 @@ The response body contains full character data;
 # Data Structures
 
 ## Character (object)
+The minimum required values when specifying a new character.
 
-+ id: 2 (number, required) - The unique identifier for a character.
-+ name: El Barto (string, required) - Name of the character.
-+ title: Duke (string) - Hereditary title.
-+ sex: M (string)
-  ISO/IEC 5218.
-  NULL = 0 = not known,
-  M = 1 = male,
-  F = 2 = female,
-  X = 9 = not applicable.
-+ strength: 8 (number) - Strength is both a general evaluation of the character's physical ability, and a specific measure of force which may be applied.
-+ dexterity: 8 (number) - Dexterity measures physical coordination.
-+ endurance: 8 (number) - Endurance measures physical determination and stamina.
-+ intelligence: 8 (number) - Intelligence corresponds to IQ.
-+ education: 8 (number) - Education indicates the highest level of schooling attained.
-+ social: 14 (number) - Social Standing notes the social class and level of society from which the character comes.
+### Properties
+
++ id: `2` (number, required) - The unique identifier for a character.
++ name: `El Barto` (string, required) - Name of the character.
+
+## Character Detail (Character)
+Optional details of a character.
+
+### Properties
+
++ title: `Duke` (string) - Hereditary title.
++ sex: `M` (string) - Sex of the character. ISO/IEC 5218. NULL, M, F, X.
+
+## Attribute (object)
+An attribute of a character, either a skill, item, or characteristic.
+
+### Properties
+
++ id: `1` (number, required) - The unique identifier for a attribute.
++ type: `UPP` (string, required) - The type of the attribute.
++ name: `dexterity` (string, required) - The name of the attribute.
++ description: `Dexterity measures physical coordination.` (string) - The short description of the attribute.
++ notes: `` (string) - Long form extra notes describing the attribute if required.
++ datatype: `number` (string) - The datatype of the attribute. One of: number, string.
++ `min_value`: `0` (number) - For numeric attributes, the minimum value this attribute can take.
++ `max_value`: `15` (number) - For numeric attributes, the maximum value this attribute can take.
++ weight: `500` (number) - Weight in grams.
++ cost: `10` (number) - Cost in credits.
++ tl: `9` (number) - Technology level.
+
 
 ## Error400 (object)
 
-+ status: 400 (string, required) - HTTP status code
-+ code: 1400 (string, required) - specific error code
-+ title: Bad Request (string, required) - specific error message
-+ detail: The request could not be understood by the server due to malformed syntax. (string, required) - specific detail message
++ errors (array)
+  + status: `400` (string, required) - HTTP status code
+  + code: `1400` (string, required) - specific error code
+  + title: `Bad Request` (string, required) - specific error message
+  + detail: `The request could not be understood by the server due to malformed syntax.` (string, required) - specific detail message
+
+## Error404 (object)
+
++ errors (array)
+  + status: `404` (string, required)
+  + code: `1404` (string, required)
+  + title: `Not Found` (string, required)
+  + detail: `The requested resource could not be found but may be available in the future.` (string, required) - specific detail message
 
 ## Error405 (object)
 
-+ status: 405 (string, required)
-+ code: 1405 (string, required)
-+ title: Method Not Supported (string, required)
-+ detail: The method specified in the Request Line is not allowed for the resource identified by the Request-URI. (string, required)
++ errors (array)
+  + status: 405 (string, required)
+  + code: 1405 (string, required)
+  + title: Method Not Supported (string, required)
+  + detail: The method specified in the Request Line is not allowed for the resource identified by the Request-URI. (string, required) - specific detail message

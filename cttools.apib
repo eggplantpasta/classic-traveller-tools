@@ -36,7 +36,8 @@ List full detail on all characters.
 The universal personality profile (UPP) is represented by an integer from 1 to 15.
 
 + Response 200 (application/json)
-  + Attributes (array[Character Detail])
+    + Attributes (object)
+        + data (array[Character Detail])
 
 ### Generate a New Character [POST]
 
@@ -58,7 +59,8 @@ The response body contains full character data;
 
             Location: /characters/2
 
-    + Attributes (Character Detail)
+    + Attributes (object)
+        + data (Character Detail)
 
 
 ### 405 Method Not Supported [PUT]
@@ -80,7 +82,8 @@ The response body contains full character data;
 ### View a Character's Detail [GET]
 
 + Response 200 (application/json)
-  + Attributes (Character Detail)
+    + Attributes (object)
+        + data (Character Detail)
 
 ### 405 Method Not Supported [POST]
 
@@ -93,7 +96,8 @@ The response body contains full character data;
     + id (number) - ID of the Character in the form of an integer
 
 + Response 200 (application/json)
-  + Attributes (Character Detail)
+    + Attributes (object)
+        + data (Character Detail)
 
 
 ### Delete a Character [DELETE]

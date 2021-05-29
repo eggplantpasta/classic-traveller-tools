@@ -10,7 +10,7 @@ This project is done so I can learn [Laravel](laravel.com).
 
 ## API Documentation
 
-The HTML [API documentation](http://htmlpreview.github.com/?https://github.com/eggplantpasta/classic-traveller-tools/blob/master/cttools.html) and the source [blueprint](https://apiblueprint.org/) file cttools.apib are included in this repository. The HTML is generated using [aglio](https://github.com/danielgtaylor/aglio).
+The HTML [API documentation](https://htmlpreview.github.io/?https://github.com/eggplantpasta/classic-traveller-tools/blob/master/cttools.html) and the source [blueprint](https://apiblueprint.org/) file cttools.apib are included in this repository. The HTML is generated using [aglio](https://github.com/danielgtaylor/aglio).
 ```
 aglio --theme-variables slate -i cttools.apib -o cttools.html
 ```

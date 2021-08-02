@@ -1,10 +1,9 @@
 <?php
 
-use Illuminate\Http\Request;
-
 use App\Character;
 use App\Http\Resources\Character as CharacterResource;
 use App\Http\Resources\CharacterCollection;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------

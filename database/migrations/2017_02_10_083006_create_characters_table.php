@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateCharactersTable extends Migration
 {
@@ -26,7 +26,7 @@ class CreateCharactersTable extends Migration
             $table->string('service', 20)->nullable();
             $table->string('rank', 20)->nullable();
             $table->smallInteger('terms_of_service')->unsigned()->default(0);
-            $table->boolean('retired')->default(FALSE);
+            $table->boolean('retired')->default(false);
 
             // UPP
             $table->smallInteger('strength')->unsigned();
@@ -42,7 +42,7 @@ class CreateCharactersTable extends Migration
             $table->smallInteger('high_passage')->unsigned()->default(0);
             $table->smallInteger('middle_passage')->unsigned()->default(0);
             $table->smallInteger('low_passage')->unsigned()->default(0);
-            $table->boolean('tas_membership')->default(FALSE);
+            $table->boolean('tas_membership')->default(false);
 
             $table->timestamps();
         });

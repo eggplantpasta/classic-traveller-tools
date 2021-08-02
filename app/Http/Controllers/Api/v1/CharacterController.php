@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Api\v1;
 
+use App\Character;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Response;
-
-use App\Http\Controllers\Controller;
-use App\Character;
 
 class CharacterController extends Controller
 {
@@ -18,8 +17,9 @@ class CharacterController extends Controller
     public function index()
     {
         $character = Character::all();
+
         return Response::json([
-            'data' => $character->toArray()
+            'data' => $character->toArray(),
         ], 200);
     }
 
@@ -52,7 +52,7 @@ class CharacterController extends Controller
 
         // return the new character
         return Response::json([
-            'data' => $character
+            'data' => $character,
         ], 201);
     }
 

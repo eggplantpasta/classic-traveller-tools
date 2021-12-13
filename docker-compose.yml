@@ -3,11 +3,11 @@ version: '3'
 services:
     laravel.test:
         build:
-            context: ./vendor/laravel/sail/runtimes/8.0
+            context: ./vendor/laravel/sail/runtimes/8.1
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
-        image: sail-8.0/app
+        image: sail-8.1/app
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         ports:
@@ -27,15 +27,16 @@ services:
             - meilisearch
             - selenium
     mysql:
-        image: 'mysql:8.0'
+        image: 'mysql/mysql-server:8.0'
         ports:
             - '${FORWARD_DB_PORT:-3306}:3306'
         environment:
             MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+            MYSQL_ROOT_HOST: "%"
             MYSQL_DATABASE: '${DB_DATABASE}'
             MYSQL_USER: '${DB_USERNAME}'
             MYSQL_PASSWORD: '${DB_PASSWORD}'
-            MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
         volumes:
             - 'sailmysql:/var/lib/mysql'
         networks:
@@ -58,6 +59,7 @@ services:
             timeout: 5s
     meilisearch:
         image: 'getmeili/meilisearch:latest'
+        platform: linux/x86_64
         ports:
             - '${FORWARD_MEILISEARCH_PORT:-7700}:7700'
         volumes:
